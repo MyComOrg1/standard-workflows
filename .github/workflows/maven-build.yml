@@ -10,7 +10,7 @@ on:
         default: "11"
 
 jobs:
-  static-scan:
+  build:
     runs-on: ubuntu-latest
 
     steps:
