@@ -3,6 +3,11 @@ name: "Maven build"
 on: 
   push: # more make sense to be on merge even, simply for demo
   workflow_call: # todo: try to disable to confirm this is needed
+    inputs:
+      jdkVersion:
+        type: string
+        required: false
+        default: "11"
 
 jobs:
   static-scan:
@@ -11,11 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3 #Q: this step name is defined by called action?
       - name: Setup JDK
-        uses: actions/setup-java@v3
-        with: # supported version: 8/11/16/17, to be parameterize
-          java-version: '11'
-          distribution: 'temurin'
-          cache: 'maven'
+        #uses: actions/setup-java@v3
+        #with: # supported version: 8/11/16/17, to be parameterize
+        #  java-version: '11'
+        #  distribution: 'temurin'
+        #  cache: 'maven'
+        run: echo "installing jdk ${{ inputs.jdkVersion }}"
 
       - name: Sona scan
         run: echo "trigger sonaqube scan for code coverage"
