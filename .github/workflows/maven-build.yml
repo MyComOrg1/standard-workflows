@@ -10,7 +10,7 @@ on:
         default: "11"
 
 jobs:
-  build:
+  scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,6 +28,17 @@ jobs:
 
       # and some others common useful steps ... 
 
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build counter
+        run: echo "sending metrics to maven build counter"
+
+  build:
+    needs: [scan, metrics]
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Build with Maven
         run: echo "mvn clean install"
       
