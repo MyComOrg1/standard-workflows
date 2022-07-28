@@ -2,7 +2,7 @@ name: "Maven build"
 
 on: 
   push: # more make sense to be on merge even, simply for demo
-  workflow_call:
+  workflow_call: # todo: try to disable to confirm this is needed
 
 jobs:
   static-scan:
