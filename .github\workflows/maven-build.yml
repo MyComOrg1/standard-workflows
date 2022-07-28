@@ -1,7 +1,8 @@
 name: "Maven build"
 
 on: 
-  push # more make sense to be on merge even, simply for demo
+  push: # more make sense to be on merge even, simply for demo
+  workflow_call:
 
 jobs:
   static-scan:
@@ -19,7 +20,7 @@ jobs:
         run: echo "trigger sonaqube scan for code coverage"
 
       # and some others common useful steps ... 
-      
+
       - name: Build with Maven
         run: echo "mvn clean install"
       
