@@ -1,0 +1,27 @@
+name: "Deploy to EKS"
+
+on: 
+  push: # more make sense to be on merge even, simply for demo
+  workflow_call: # todo: try to disable to confirm this is needed
+    inputs:
+      namespace:
+        type: string
+        required: true
+    secrets:
+      token:
+        required: true
+
+
+jobs:
+  deloy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3 #Q: this step name is defined by called action?
+      - name: Setup helm
+        run: echo "helm init"
+
+      - name: Deploy
+        run: echo "helm upgrade to ${{ inputs.namespace }} with token ${{ secrets.token }}"
+
+      # and some others common useful steps ... 

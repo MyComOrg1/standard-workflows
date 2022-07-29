@@ -7,7 +7,7 @@ on:
       jdkVersion:
         type: string
         required: false
-        default: "11"
+        default: "11" # todo: default value does not seems to be use?
 
 jobs:
   scan:
