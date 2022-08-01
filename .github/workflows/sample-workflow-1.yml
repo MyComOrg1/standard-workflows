@@ -1,0 +1,25 @@
+name: "sample workflow"
+
+on: 
+  pull_request: # reusbale workflow should have the same trigger events defined
+  workflow_call: # todo: try to disable to confirm this is needed
+    inputs:
+      majorVersion:
+        type: string
+        required: true
+        default: "11"
+      optionalMinorVersion:
+        type: string
+        required: false
+        default: "11"
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print major version
+        run: echo "major ${{ inputs.majorVersion }}"
+
+      - name: Print minor version
+        run: echo "[Optional] minor version - ${{ inputs.optionalMinorVersion }}"
