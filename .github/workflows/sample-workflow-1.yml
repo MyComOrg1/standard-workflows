@@ -1,8 +1,14 @@
-name: "sample workflow"
+name: "sample workflow" # note: the reusable workflow name is not shown in actions/jobs
+                        #       it is overwritten by caller worflow job name
 
-on: 
-  pull_request: # reusbale workflow should have the same trigger events defined
-  workflow_call: # todo: try to disable to confirm this is needed
+on:
+  pull_request_target: # this has no impact on caller workflow
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  workflow_call: # this is the only one needed to enabled 'callable'
     inputs:
       majorVersion:
         type: string
