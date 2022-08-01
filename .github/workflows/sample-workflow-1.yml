@@ -1,4 +1,4 @@
-name: "sample workflow" # note: the reusable workflow name is not shown in actions/jobs
+name: "sample workflow" # note: the reusable workflow name is not shown in caller
                         #       it is overwritten by caller worflow job name
 
 on:
